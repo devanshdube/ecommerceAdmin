@@ -1,31 +1,46 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-const products = [
-  {
-    id: 1,
-    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D",
-    title: "Nest Shaped Chair",
-    sales: 134,
-    price: 240,
-    oldPrice: 350,
-    rating: 4.2,
-    discount: "-10%",
-  },
-  {
-    id: 2,
-    image: "https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTExL3BmLXMxMDgtcG0tNDExMy1tb2NrdXAuanBn.jpg",
-    title: "Nest Shaped Chair",
-    sales: 134,
-    price: 240,
-    oldPrice: 350,
-    rating: 4.2,
-    discount: "-10%",
-  },
-  // Add more product objects...
-];
-
+import { useSelector, useDispatch } from 'react-redux'
+import { addProductsvalues } from "../Features/ProductSlice";
+// const products = [
+//   {
+//     id: 1,
+//     image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D",
+//     title: "Nest Shaped Chair",
+//     sales: 134,
+//     price: 240,
+//     oldPrice: 350,
+//     rating: 4.2,
+//     discount: "-10%",
+//   },
+//   {
+//     id: 2,
+//     image: "https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTExL3BmLXMxMDgtcG0tNDExMy1tb2NrdXAuanBn.jpg",
+//     title: "Nest Shaped Chair",
+//     sales: 134,
+//     price: 240,
+//     oldPrice: 350,
+//     rating: 4.2,
+//     discount: "-10%",
+//   },
+//   // Add more product objects...
+// ];
+// id: nanoid(),
+//         inputProductTitle,
+//         inputProductDescription,
+//         imageuploadify,
+//         inputPrice,
+//         inputCompareatprice,
+//         inputCostPerPrice,
+//         inputStarPoints,
+//         inputProductTags,
+//         inputProductType,
+//         inputCollection,
+//         inputVendor,
 const ProductPage = ({ isSidebarOpen }) => {
+
+   let productshow = useSelector((state)=>state.productsreducer.addproductsarr)
+   
   return (
     <div
       className={`transition-all duration-300 min-h-screen ${
@@ -73,22 +88,22 @@ const ProductPage = ({ isSidebarOpen }) => {
       </div>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
-        {products.map((product) => (
-          <div key={product.id} className="bg-white rounded-lg shadow p-2 relative">
-            <img src={product.image} alt={product.title} className="rounded-t-lg" />
+       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
+        {productshow.map((product) => (
+        <div key={product.id} className="bg-white rounded-lg shadow p-2 relative">
+             <img src={product.imageuploadify} alt={product.inputProductTitle} className="rounded-t-lg " />
             <div className="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
               {product.discount}
             </div>
             <div className="p-2">
-              <h6 className="text-sm font-medium cursor-pointer">{product.title}</h6>
+              <h6 className="text-sm font-medium cursor-pointer">{product.inputProductTitle}</h6>
               <div className="flex justify-between text-sm mt-1">
                 <p>
                   <strong>{product.sales}</strong> Sales
                 </p>
                 <p className="font-bold">
-                  <span className="line-through text-gray-400 mr-1">${product.oldPrice}</span>
-                  <span className="text-green-600">${product.price}</span>
+                  <span className="line-through text-gray-400 mr-1">${product.inputCostPerPrice}</span>
+                  <span className="text-green-600">${product.inputCompareatprice}</span>
                 </p>
               </div>
               <div className="flex items-center mt-2 text-yellow-400 text-xs">
@@ -107,7 +122,7 @@ const ProductPage = ({ isSidebarOpen }) => {
             </div>
           </div>
         ))}
-      </div>
+      </div> 
     </div>
   );
 };

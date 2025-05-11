@@ -1,10 +1,10 @@
 import React from 'react';
-
+import logo from '../assets/logo.jpg'
 const Header = () => {
   return (
     <header className="bg-transparent shadow p-4 flex justify-between items-center">
       <div className="flex items-center">
-        <img src="https://via.placeholder.com/40" alt="Logo" className="h-10" />
+        <img src={logo} alt="Logo" className="h-10 rounded-full" />
         <span className="ml-2 text-xl font-bold">MyApp</span>
       </div>
       <div className="relative">
