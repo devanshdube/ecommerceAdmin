@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { BiArrowFromLeft } from "react-icons/bi";
 
 const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
   // const [isOpen, setIsOpen] = useState(true);
@@ -30,7 +31,7 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
     >
       <div className="p-4">
         <button onClick={toggleSidebar} className="focus:outline-none">
-          {isSidebarOpen  ? "⬅️ Daily Deals MART " : "➡️"} 
+          {isSidebarOpen  ? <BiArrowFromLeft className="text-3xl"/> : "➡️"} 
         </button>
       </div>
       <nav className="mt-4">
